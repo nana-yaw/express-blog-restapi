@@ -1,17 +1,17 @@
 const router = require("express").Router()
 const { ensureAuthenticated, ensureAuthorized } = require("../middleware/auth-middleware")
-
+const {validationRules, validate} = require("../validations/video-validator")
 const { addOne, removeOne, updateOne, getAll, getOne, getTopVideos } = require("../controllers/videos-controller")
 
 router.get("/videos", async(req, res) => {
     await getAll(req, res)
 })
 
-router.post("/videos", ensureAuthenticated, ensureAuthorized(["admin"]), async(req, res) => {
+router.post("/videos", ensureAuthenticated, ensureAuthorized(["admin"]), validationRules(), validate, async(req, res) => {
     await addOne(req, res)
 })
 
-router.put("/videos/:id", ensureAuthenticated, ensureAuthorized(["admin"]), async(req, res) => {
+router.put("/videos/:id", ensureAuthenticated, ensureAuthorized(["admin"]), validationRules(), validate, async(req, res) => {
     await updateOne(req, res)
 })
 

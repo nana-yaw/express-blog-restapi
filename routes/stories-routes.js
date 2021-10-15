@@ -1,17 +1,17 @@
 const router = require("express").Router()
 const { ensureAuthenticated, ensureAuthorized } = require("../middleware/auth-middleware")
-
+const {validationRules, validate} = require("../validations/story-validator")
 const { addOne, removeOne, updateOne, getAll, getOne, getTopStories, getOneBySlug } = require("../controllers/stories-controller")
 
 router.get("/stories", async(req, res) => {
     await getAll(req, res)
 })
 
-router.post("/stories", ensureAuthenticated, ensureAuthorized(["admin"]), async(req, res) => {
+router.post("/stories", ensureAuthenticated, ensureAuthorized(["admin"]), validationRules(), validate, async(req, res) => {
     await addOne(req, res)
 })
 
-router.put("/stories/:id", ensureAuthenticated, ensureAuthorized(["admin"]), async(req, res) => {
+router.put("/stories/:id", ensureAuthenticated, ensureAuthorized(["admin"]), validationRules(), validate, async(req, res) => {
     await updateOne(req, res)
 })
 
