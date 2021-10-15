@@ -38,7 +38,7 @@ const doc = {
             scheme: 'bearer'
         }
     },
-    definition: {
+    definitions: {
         LoginModel: {
             $email: "admin@email.com",
             $password: "Password123#",
