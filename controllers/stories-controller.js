@@ -8,6 +8,9 @@ const addOne = async (req, res) => {
             ...req.body,
             createdBy: req.user._id
         })
+        if (!newRecord.slug) {
+            newRecord.slug = generateSlug(newRecord.title)
+        }
         await newRecord.save()
         return res.status(201).json({
             message: "Item successfully created",
@@ -146,6 +149,18 @@ const getOneBySlug = async (req, res) => {
             success: false
         })
     }
+}
+
+const generateSlug = (title) => {
+    const slugText = title.toString()
+                           .trim()
+                           .toLowercase()
+                           .replace(/\s+/g, "-")
+                           .replace(/[^\w\-]+/g, "")
+                           .replace(/\-\-+/g, "-")
+                           .replace(/^-+/, "")
+                           .replace(/-+$/, "")
+    return slugText
 }
 
 module.exports = {
