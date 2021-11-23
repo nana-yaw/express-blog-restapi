@@ -8,10 +8,10 @@ const { validationRules : passwordValidationRules, validate : passwordValidate }
 router.post("/login", async(req, res) => {
     /*
         #swagger.tags = ['Auth']
-        #swagger.parameters['obj = {
+        #swagger.parameters['obj'] = {
             in: 'body',
             required: true,
-            scheme: {$ref: '#/definitions/LoginModel'}
+            schema: {$ref: "#/definitions/LoginModel"}
         }
     */
     await login(req.body, res)
@@ -20,10 +20,10 @@ router.post("/login", async(req, res) => {
 router.post("/register", validationRules(), validate, async(req, res) => {
     /*
         #swagger.tags = ['Auth']
-        #swagger.parameters['obj = {
+        #swagger.parameters['obj'] = {
             in: 'body',
             required: true,
-            scheme: {$ref: '#/definitions/RegisterModel'}
+            schema: {$ref: "#/definitions/RegisterModel"}
         }
     */
     await register(req.body, "user", res)
@@ -32,10 +32,10 @@ router.post("/register", validationRules(), validate, async(req, res) => {
 router.post("/verify", async(req, res) => {
     /*
         #swagger.tags = ['Auth']
-        #swagger.parameters['obj = {
+        #swagger.parameters['obj'] = {
             in: 'body',
             required: true,
-            scheme: {$ref: '#/definitions/VerifyEmailModel'}
+            schema: {$ref: "#/definitions/VerifyEmailModel"}
         }
     */
     await verify(req.body, res)
