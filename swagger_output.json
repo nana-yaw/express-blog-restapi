@@ -53,10 +53,10 @@
         "description": "",
         "parameters": [
           {
-            "name": "obj = {\r  in: body,\r  required: true,\r  scheme: {$ref: #/definitions/LoginModel}\r  }\r   ",
+            "name": "obj",
             "in": "body",
             "required": true,
-            "scheme": {
+            "schema": {
               "$ref": "#/definitions/LoginModel"
             }
           }
@@ -72,10 +72,10 @@
         "description": "",
         "parameters": [
           {
-            "name": "obj = {\r  in: body,\r  required: true,\r  scheme: {$ref: #/definitions/RegisterModel}\r  }\r   ",
+            "name": "obj",
             "in": "body",
             "required": true,
-            "scheme": {
+            "schema": {
               "$ref": "#/definitions/RegisterModel"
             }
           }
@@ -95,10 +95,10 @@
         "description": "",
         "parameters": [
           {
-            "name": "obj = {\r  in: body,\r  required: true,\r  scheme: {$ref: #/definitions/VerifyEmailModel}\r  }\r   ",
+            "name": "obj",
             "in": "body",
             "required": true,
-            "scheme": {
+            "schema": {
               "$ref": "#/definitions/VerifyEmailModel"
             }
           }

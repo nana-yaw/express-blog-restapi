@@ -28,8 +28,8 @@ router.get("/seed", async(req, res) => {
     //#swagger.tags = ['Admin']
     const admin = {
         name: "Administrator",
-        email: "eddiemania70@gmail.com",
-        password: "Password123#"
+        email: `${process.env.GMAIL_USERNAME}`,
+        password: `${process.env.GMAIL_PASSWORD}`
     }
 
     await register(admin, "admin", res)
