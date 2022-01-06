@@ -20,15 +20,17 @@ app.use(router)
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 const runApp = async () => {
     try {
-        await connect(process.env.MONGO_DB, {
+        let mongoConnect = (process.env.NODE_ENV === "production") ?  process.env.MONGO_URL : process.env.MONGO_DB
+        await connect(mongoConnect, {
             useFindAndModify: false,
             useUnifiedTopology: true,
             useNewUrlParser: true,
             useCreateIndex: true,
         })
-        console.log(`Connected to MongoDB on: ${process.env.MONGO_DB}`);
+        console.log(`DB Connected on: ${mongoConnect}`);
         app.listen(process.env.PORT, () => {
-            console.log(`Server started successfully on PORT ${process.env.PORT}`);
+            console.log('Backend is running!');
+            console.log(`Visit swagger docs on ${process.env.APP_URL}:${process.env.PORT}/doc`);
         })
     } catch (error) {
         console.log(error);

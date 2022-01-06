@@ -25,4 +25,4 @@ yarn start-gendoc
 
 ## Swagger documentation (UI)
 
-http://localhost:5000/doc
+Check your terminal/console for link to docs.

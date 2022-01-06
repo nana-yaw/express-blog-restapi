@@ -3,7 +3,7 @@ const swaggerAutogen = require("swagger-autogen")()
 const doc = {
     info: {
         version: "1.0.0",
-        title: "Rocktech (Video and News App) API",
+        title: "EWC (Video and News App) API",
         description: "REST API tutorial using NodeJS."
     },
     host: "localhost:5000",
