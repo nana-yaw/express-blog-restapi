@@ -17,7 +17,7 @@ require("./middleware/passport-middleware")(passport)
 
 app.use(paginate.middleware(process.env.LIMIT, process.env.MAX_LIMIT))
 app.use(router)
-app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile))
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 const runApp = async () => {
     try {
         let mongoConnect = (process.env.NODE_ENV === "production") ?  process.env.MONGO_URL : process.env.MONGO_DB
